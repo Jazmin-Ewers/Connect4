@@ -1,0 +1,75 @@
+* Pseudocode for Connect 4
+*** Constants
+1) Define required constants:
+1a) Define a object that represents the board with keys of 'null', players 1 & -1. The value for each key represents the color of game piece to display.  For an empty square (null) it should be white, player 1 it should be red and player -1 should be black.
+
+
+*** App's state (variables)
+2) Define required variables used to track the state of the game:
+2a) Create a nested board array to represent the circles on the Connect4 board. Each row of the board has its own array.	
+Example :
+board = [[null, null, null,  null, null, null, null] 
+         [null, null, null, null, null, null, null],
+         [null, null, null, null, null, null, null],
+         [null, null, null, null, null, null, null],
+         [null, null, null, null, null, null, null],
+         [null, null,  -1  ,  1  ,  -1  , null, null],
+        ] 
+2b) Create a turn variable to remember whose turn it is.
+2c) Create a winner variable to represent three different possibilities - player that won, a tie and game in play.
+
+
+*** Cached element references (creating variables using DOM to access html elements 
+3) Store and Select all 42 html elements that represent the Connect4 board circle spaces in a variable  
+Example: const circleEls = document.querySelectorAll('td'); 
+3a) Store and Select paragraph tag that will change text based on who's turn it is
+
+
+*** Event listeners 
+4) Store and Create event listeners assigned to the 42 html circle spaces.
+4a) Store and Create event listener assigned to the Reset Game button. 
+
+
+*** Functions
+5) Create a Initialize function of the state variables:
+5a) Initialize the board array to 42 nulls to represent empty circle spaces. 
+- Create a state vairable that tracks whose turn it is. 1 (Red token player) or -1 (Black token player).
+- Create a state variable that represents the winner. 
+            - Winner will hold the player value (1 or -1) if there's a winner. 
+            - Winner will hold a 'T' if there's a tie. 
+
+5b) Take state variables and put them on the screen by creating a Render function:
+- Render the Connect4 board:
+     - Loop over each of the 42 elements that represent the circle spaces on the page, and for each iteration:
+     - Use the index of the iteration to access the mapped value from the board array.
+     - Set the cirlcle space color of the current element by using the value as a key on the colors lookup object (constant).
+5c) Render a message:
+- If winner has a value other than null (game still in progress), render whose turn it is, by appending turn variable to the paragraph tag.
+- If winner is equal to 'T' (tie), render a tie message.
+- Otherwise, render a congratulatory message to which player has won 
+5d) Insert the function that handles when a user clicks on an empty Connect 4 circle space.
+
+6) Create a Winner function
+- Loop through the list of arrays
+- Loop through each index of the array until it reaches the index of 3        
+- abosolute vaule of the sum of the slice of the array is equal to 4 then return the winner
+- Loop each index of the array up to 3 times  
+- If there is a winner within each column, return the winner
+- Outside the loop check if there is winner at particular indices for a diagonal winner, return the winner
+
+7) Create a function that handles when a user clicks on an empty Connect 4 circle space.
+- Obtain the index of the circle space that was clicked by either:
+- Grab the id from the square we click using evt.target.id. 
+- The id should be the string version of number index on the board array.
+7a) If the board has a value at the index, immediately return because that circle space is already taken.
+7b) If there isn't a game piece immediately below the clicked element, immediately return because game pieces must be stacked on top of each other. 
+7c) If winner is not null, immediately return because the game is over.
+7e) Update the board array at the index with the value of turn.
+7f) Flip turns by multiplying turn by -1.
+7g) Set the winner variable to the Winner function; if there's a winner it will be set to the player that won
+7h) If there's no winner, check if there's a tie:
+- Set winner to 'T' if there are no more nulls in the board array.
+7i) All state varibles have been updated, so render the state to the page.
+
+8) Handle a player clicking the Reset button:
+- Call the initialize function and render an empty board.
