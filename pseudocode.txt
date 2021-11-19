@@ -15,6 +15,8 @@ board = [[null, null, null,  null, null, null, null]
          [null, null, null, null, null, null, null],
          [null, null,  -1  ,  1  ,  -1  , null, null],
         ] 
+        // 7 buttons 
+        // Column buttons 
 2b) Create a turn variable to remember whose turn it is.
 2c) Create a winner variable to represent three different possibilities - player that won, a tie and game in play.
 
@@ -42,7 +44,7 @@ Example: const circleEls = document.querySelectorAll('td');
 - Render the Connect4 board:
      - Loop over each of the 42 elements that represent the circle spaces on the page, and for each iteration:
      - Use the index of the iteration to access the mapped value from the board array.
-     - Set the cirlcle space color of the current element by using the value as a key on the colors lookup object (constant).
+     - Set the circle space color of the current element by using the value as a key on the colors lookup object (constant).
 5c) Render a message:
 - If winner has a value other than null (game still in progress), render whose turn it is, by appending turn variable to the paragraph tag.
 - If winner is equal to 'T' (tie), render a tie message.
