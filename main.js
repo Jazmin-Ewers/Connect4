@@ -6,7 +6,7 @@ const lookup = {
     null: "white"
 };
 /*----- cached element references -----*/
-let message = document.querySelector("h1");
+let message = document.querySelector("h3");
 
 /*----- event listeners -----*/
 document.getElementById('startbutton').addEventListener('click', startGame);

@@ -1,7 +1,6 @@
 
 
 table {
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 360px;
     height: 305px;
@@ -44,10 +43,12 @@ tr {
 
 #maincontent {
   background: url(images/Connect4boardborder.png) no-repeat 0 100%;
-  padding: 60px 60px 40px 30px;
+  padding: 60px 60px 39px 30px;
   /* top right bottom left */
  }
 
  body {
    background-color: #f8f8f8;
+   font-family: arial, sans-serif;
+   text-align: center;
  }
