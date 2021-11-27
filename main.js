@@ -1,3 +1,6 @@
+/*----- constants -----*/
+const redCircleImg = "images/red-circle.jpeg";
+const blackCircleImg = "images/black-circle.png";
 /*----- app's state (variables) -----*/
 let turn, winner, board;
 const lookup = {
@@ -5,8 +8,13 @@ const lookup = {
     "-1": "black", 
     null: "white"
 };
+const lookupImg = {
+    "1": redCircleImg, 
+    "-1": blackCircleImg, 
+};
 /*----- cached element references -----*/
 let message = document.querySelector("h3");
+const imgEl = document.querySelector('img'); 
 
 /*----- event listeners -----*/
 document.getElementById('startbutton').addEventListener('click', startGame);
@@ -27,6 +35,7 @@ function init(){
 }
 function startGame(){
     init();
+    console.log(testDiagonal());
     document.querySelector('table').addEventListener('click', handleMove);
 }
  
@@ -55,11 +64,12 @@ function render(){
     } else if (winner === 1 || winner === -1 ) {
         return message.innerHTML = `Player ${lookup[winner]} won!`;
     } else {
-        return message.innerHTML = `It's Player ${lookup[turn]}'s Turn`;
+        message.innerHTML = "You're up next";
+        imgEl.src = lookupImg[turn];
     }
 } 
 
-function getWinner(){
+function getWinner(board){
 // Get Column winner
     for (let i = 0; i < 7; i++) {
         if (Math.abs(board[0][i] +  board[1][i] + board[2][i] + board[3][i]) === 4) {
@@ -89,13 +99,12 @@ function getWinner(){
     }
 
 // Get Diagonal winner
+let diagonalIndex1 = 0;
+let diagonalIndex2 = 1;
+let diagonalIndex3 = 2;
+let diagonalIndex4 = 3;
     for (let i = 0; i < 4; i++) {
-        let diagonalIndex1 = 0;
-        let diagonalIndex2 = 1;
-        let diagonalIndex3 = 2;
-        let diagonalIndex4 = 3;
         if (Math.abs(board[0][diagonalIndex1] +  board[1][diagonalIndex2] + board[2][diagonalIndex3] + board[3][diagonalIndex4]) === 4){
-            console.log(`Won 0${diagonalIndex1} + 1${diagonalIndex2} + 2${diagonalIndex3} + 3${diagonalIndex4}`)
             return board[0][diagonalIndex1];
         } else if (Math.abs(board[1][diagonalIndex1] +  board[2][diagonalIndex2] + board[3][diagonalIndex3] + board[4][diagonalIndex4]) === 4){
             return board[1][diagonalIndex1];
@@ -110,7 +119,7 @@ function getWinner(){
             return board[4][diagonalIndex1];
                 
         } else if (Math.abs(board[5][diagonalIndex1] +  board[4][diagonalIndex2] + board[3][diagonalIndex3] + board[2][diagonalIndex4]) === 4){
-            return board[2][diagonalIndex1];
+            return board[5][diagonalIndex1];
                 
         } else {
             diagonalIndex1 ++;
@@ -121,6 +130,44 @@ function getWinner(){
     }
 }
     
+
+function testDiagonal() {
+    
+    let d1 = 0
+    let d2 = 1
+    let d3 = 2
+    let d4 = 3
+    let i = 0
+    while (i < 4) {
+
+        fakeBoard = [[null, null, null,  null, null, null, null], 
+                    [null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null],
+                    [null, null, null,null, null, null, null],
+                    [null, null, null, null, null, null, null]
+                    ];
+
+        fakeBoard[5][d1] = 1
+        fakeBoard[4][d2] = 1
+        fakeBoard[3][d3] = 1
+        fakeBoard[2][d4] = 1
+
+        if ( getWinner(fakeBoard) !== 1 ) {
+            console.log("failure", fakeBoard)
+            return "FAILED"
+        } else {
+            console.log("passed", fakeBoard)
+        }
+        d1 += 1
+        d2 += 1
+        d3 += 1
+        d4 += 1
+        i += 1
+    }
+    return "PASSED"
+}
+
 function handleMove(evt){
     if (winner === 1 || winner === -1){
         return
@@ -145,7 +192,7 @@ function handleMove(evt){
     }
     board[rowNumberIndex][elementIndex] = turn;
     turn *= -1;
-    winner = getWinner();
+    winner = getWinner(board);
     render();
 }
 

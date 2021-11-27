@@ -56,11 +56,21 @@ tr {
  }
 
 
-.image {
+.boardimage {
   background-image: url('images/Connect4boardborder.png');
   background-repeat: no-repeat;
   width: 361px;
   height: 304px;
   /* Center horizontally */
   margin: 0 auto;
+ }
+
+ img {
+  width: 30px;
+  height: 30px;
+  border: none;
+ }
+
+ h3 {
+  display: inline-block;
  }
