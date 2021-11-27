@@ -9,9 +9,9 @@
 - To reset the game, press reset game. 
 
 ### Screenshots of game:
-![Start Game](https://imgur.com/a/A38vo7u) 
-![Playing the game](https://imgur.com/gallery/sXSDXAr)
-![Black circle player wins!](https://imgur.com/gallery/CYY5DMa)
+![Start Game](https://imgur.com/qHrBdTf)
+![Playing the game](https://imgur.com/Bl1Tjul)
+![Black circle player wins!](https://imgur.com/K5HBjQO)
 
 ### Technologies Used
 - JavaScript
