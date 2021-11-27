@@ -19,6 +19,7 @@
 - CSS
 
 ### Link to play the game 
+https://jazmin-ewers.github.io/Connect4/
 
 ### Planned future enhancements
 - Instead of having the circles appear when clicked it will have a animation of the circle dropping down into the spot.
