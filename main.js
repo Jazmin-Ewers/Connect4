@@ -13,8 +13,11 @@ const lookupImg = {
     "-1": blackCircleImg, 
 };
 /*----- cached element references -----*/
-let message = document.querySelector("h3");
 const imgEl = document.querySelector('img'); 
+let message = document.getElementById("playerMessage");
+let resetgamebuttonEl = document.getElementById("resetbutton");
+let startgamebuttonEl = document.getElementById("startbutton");
+let maincontentEl = document.getElementById("maincontent");
 
 /*----- event listeners -----*/
 document.getElementById('startbutton').addEventListener('click', startGame);
@@ -34,8 +37,9 @@ function init(){
     render();
 }
 function startGame(){
+    startgamebuttonEl.style.display = "none";
+    maincontentEl.style.display = "block";
     init();
-    console.log(testDiagonal());
     document.querySelector('table').addEventListener('click', handleMove);
 }
  
@@ -60,8 +64,10 @@ function render(){
     }
     // Check who the winner is and change the text on the HTML page to display message.
     if (winner === "T") {
+        resetgamebuttonEl.style.display = "block";
         return message.innerHTML = "It's a tie!";
     } else if (winner === 1 || winner === -1 ) {
+        resetgamebuttonEl.style.display = "block";
         return message.innerHTML = `Player ${lookup[winner]} won!`;
     } else {
         message.innerHTML = "You're up next";
@@ -130,44 +136,6 @@ let diagonalIndex4 = 3;
     }
 }
     
-
-function testDiagonal() {
-    
-    let d1 = 0
-    let d2 = 1
-    let d3 = 2
-    let d4 = 3
-    let i = 0
-    while (i < 4) {
-
-        fakeBoard = [[null, null, null,  null, null, null, null], 
-                    [null, null, null, null, null, null, null],
-                    [null, null, null, null, null, null, null],
-                    [null, null, null, null, null, null, null],
-                    [null, null, null,null, null, null, null],
-                    [null, null, null, null, null, null, null]
-                    ];
-
-        fakeBoard[5][d1] = 1
-        fakeBoard[4][d2] = 1
-        fakeBoard[3][d3] = 1
-        fakeBoard[2][d4] = 1
-
-        if ( getWinner(fakeBoard) !== 1 ) {
-            console.log("failure", fakeBoard)
-            return "FAILED"
-        } else {
-            console.log("passed", fakeBoard)
-        }
-        d1 += 1
-        d2 += 1
-        d3 += 1
-        d4 += 1
-        i += 1
-    }
-    return "PASSED"
-}
-
 function handleMove(evt){
     if (winner === 1 || winner === -1){
         return
@@ -175,22 +143,16 @@ function handleMove(evt){
     // Grab index value from the circle we click on
     let rowNumberIndex = parseInt(evt.target.id.replace('cir', '')[0]);
     let elementIndex = parseInt(evt.target.id.replace('cir', '')[1]);
-
-    // Check if circle clicked is available
-    if (board[rowNumberIndex][elementIndex]) return;
-
-    // Check if circle click has a full column beneath it
-    let row = rowNumberIndex;
-    for (let i = 0; i < (6 - rowNumberIndex); i++){
-        // Looping through X times depending on how many spaces are underneath the circle clicked. 
-        // As soon as there is a null "empty space" beneath the circle click return/exit the function
-        if (row > rowNumberIndex && board[row][elementIndex] === null) {
-            return;
-        } else {
-            row ++;
+    
+    // Loop through the board's rows starting from the bottom up. 
+    // If it is empty fill in the board array at that position. 
+    for(let i = 5; i >= 0; i --){
+        if (board[i][elementIndex] === null){
+            board[i][elementIndex] = turn;
+            break;
         }
     }
-    board[rowNumberIndex][elementIndex] = turn;
+    console.log(board)
     turn *= -1;
     winner = getWinner(board);
     render();

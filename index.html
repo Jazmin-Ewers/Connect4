@@ -6,11 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script defer src="main.js"></script>
     <title>Connect4</title>
-    <h1>Connect 4</h1>
-    <h3></h3>
-    <img>
+
+    <div class="flex-container">
+        <div id="name">Connect4</div>
+        <div id="start-button-container">
+            <button type="button" class="btn btn-success" id="startbutton">START GAME</button>
+        </div>
+        <div id="playerMessage"><img></div> 
+    </div>
+
+
     <div id="maincontent">
         <div class="boardimage">
             <table>
@@ -71,8 +79,6 @@
             </table>
         </div>
     </div>
-    <br>
-    <button id="startbutton">START GAME</button>
     <br>
     <br>
     <button id="resetbutton">RESET GAME</button>
