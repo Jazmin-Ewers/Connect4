@@ -3,9 +3,9 @@
 ### How to Play:
 - Press Start Game to start the game.
 - Each player is represented as either a red circle or a black circle. 
-- When it's the player turn, they will click on an empty circular space.
-- The empty circular space will be filled onlt if their is a circle underneath it.
-- To win the game, the player must have 4 of their circle lined up in either a row, column, or diagonal.
+- When it's the player turn, they will click on the column they would like the circle to fall into.
+- An empty circular space will be filled starting from the bottom to the top.
+- To win the game, the player must have 4 of their circles lined up in either a row, column, or a diagonal.
 - To reset the game, press reset game. 
 
 ### Technologies Used
