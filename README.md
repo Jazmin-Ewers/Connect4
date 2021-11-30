@@ -21,6 +21,7 @@ https://jazmin-ewers.github.io/Connect4/
 - Arrows hover over the column you will like to drop your circle into. 
 
 ### Screenshots of game:
-![Imgur](https://i.imgur.com/qHrBdTf.png)
-![Imgur](https://i.imgur.com/Bl1Tjul.png)
-![Imgur](https://i.imgur.com/K5HBjQO.png)
+![Imgur](https://i.imgur.com/VOS0m4W.png) 
+![Imgur](https://i.imgur.com/WCjYTvE.png) 
+![Imgur](https://i.imgur.com/CjaaT5M.png) 
+![Imgur](https://i.imgur.com/3BRnF7v.png) 
