@@ -1,6 +1,4 @@
 /*----- constants -----*/
-const redCircleImg = "images/red-circle.jpeg";
-const blackCircleImg = "images/black-circle.png";
 /*----- app's state (variables) -----*/
 let turn, winner, board;
 const lookup = {
@@ -8,12 +6,8 @@ const lookup = {
     "-1": "black", 
     null: "white"
 };
-const lookupImg = {
-    "1": redCircleImg, 
-    "-1": blackCircleImg, 
-};
+
 /*----- cached element references -----*/
-const imgEl = document.querySelector('img'); 
 let message = document.getElementById("playerMessage");
 let resetgamebuttonEl = document.getElementById("resetbutton");
 let startgamebuttonEl = document.getElementById("startbutton");
@@ -70,8 +64,7 @@ function render(){
         resetgamebuttonEl.style.display = "block";
         return message.innerHTML = `Player ${lookup[winner]} won!`;
     } else {
-        message.innerHTML = "You're up next";
-        imgEl.src = lookupImg[turn];
+        message.innerHTML = `Player ${(lookup[turn]).toUpperCase()} is up next`;
     }
 } 
 
@@ -140,9 +133,13 @@ function handleMove(evt){
     if (winner === 1 || winner === -1){
         return
     }
+    if (evt.target.id.slice(0,3) !== "cir") {
+        return
+    }
     // Grab index value from the circle we click on
     let rowNumberIndex = parseInt(evt.target.id.replace('cir', '')[0]);
     let elementIndex = parseInt(evt.target.id.replace('cir', '')[1]);
+    console.log(evt.target.id)
     
     // Loop through the board's rows starting from the bottom up. 
     // If it is empty fill in the board array at that position. 
@@ -152,7 +149,7 @@ function handleMove(evt){
             break;
         }
     }
-    console.log(board)
+    // console.log(board)
     turn *= -1;
     winner = getWinner(board);
     render();
