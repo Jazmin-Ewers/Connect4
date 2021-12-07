@@ -1,5 +1,10 @@
 # Connect4
 
+![Imgur](https://i.imgur.com/VOS0m4W.png) 
+![Imgur](https://i.imgur.com/WCjYTvE.png) 
+![Imgur](https://i.imgur.com/CjaaT5M.png) 
+![Imgur](https://i.imgur.com/3BRnF7v.png) 
+
 ### How to Play:
 - Press Start Game to start the game.
 - Each player is represented as either a red circle or a black circle. 
@@ -20,8 +25,4 @@ https://jazmin-ewers.github.io/Connect4/
 - Instead of having the circles appear when clicked it will have a animation of the circle dropping down into the spot.
 - Arrows hover over the column you will like to drop your circle into. 
 
-### Screenshots of game:
-![Imgur](https://i.imgur.com/VOS0m4W.png) 
-![Imgur](https://i.imgur.com/WCjYTvE.png) 
-![Imgur](https://i.imgur.com/CjaaT5M.png) 
-![Imgur](https://i.imgur.com/3BRnF7v.png) 
+
