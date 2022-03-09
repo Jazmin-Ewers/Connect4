@@ -5,6 +5,11 @@
 ![Imgur](https://i.imgur.com/CjaaT5M.png) 
 ![Imgur](https://i.imgur.com/3BRnF7v.png) 
 
+### Description
+- Used DOM manipulation to render win/loss messages, the game board and the reset game button.
+- Researched and created an algorithm for determining all possible winning game combinations.
+- Designed and developed front-end interfaces using CSS and bootstrap. 
+
 ### How to Play:
 - Press Start Game to start the game.
 - Each player is represented as either a red circle or a black circle. 
